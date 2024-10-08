@@ -1,7 +1,10 @@
 package jp.ac.it_college.std.s23024.order.ui
 
+import androidx.annotation.DrawableRes
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
@@ -9,9 +12,11 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.selection.selectable
 import androidx.compose.foundation.selection.selectableGroup
 import androidx.compose.foundation.selection.toggleable
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowDropDown
 import androidx.compose.material3.Button
@@ -36,6 +41,8 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
@@ -46,6 +53,67 @@ import jp.ac.it_college.std.s23024.order.R
 import jp.ac.it_college.std.s23024.order.ui.theme.BaseColor
 import jp.ac.it_college.std.s23024.order.ui.theme.Orange400
 import jp.ac.it_college.std.s23024.order.ui.theme.Pink80
+
+@Composable
+fun OverView(
+    modifier: Modifier = Modifier,
+    @DrawableRes imageRes: Int = R.drawable.classicbeef,
+    onTapButton: () -> Unit = {}
+) {
+   val scrollState = rememberScrollState()
+    Column(
+        modifier = Modifier
+            .padding(16.dp)
+            .verticalScroll(scrollState),
+        verticalArrangement = Arrangement.spacedBy(16.dp),
+        horizontalAlignment = Alignment.CenterHorizontally
+    ) {
+        Image(
+            painter = painterResource(id = R.drawable.order_screen),
+            contentDescription = stringResource(id = R.string.order_description),
+            modifier = Modifier.fillMaxWidth(),
+            contentScale =  ContentScale.FillWidth
+        )
+        Box(
+            modifier = Modifier
+                .padding(32.dp)
+                .fillMaxWidth(),
+            contentAlignment = Alignment.Center
+        ) {
+            Image(
+                painter = painterResource(id = R.drawable.order_background),
+                contentDescription = null
+            )
+            Image(
+                painter = painterResource(id = imageRes),
+                contentDescription = null,
+                modifier = Modifier.fillMaxWidth(),
+                contentScale = ContentScale.Crop
+            )
+        }
+        MainDishSection()
+        SideMenuSection()
+        SauceAmountSection()
+        DrinkSelectionSection()
+        OrderButtonSection(
+            text = stringResource(id = R.string.order_now),
+            onClick = onTapButton
+        )
+    }
+}
+
+@Preview(
+    device = "spec:width=400dp,height=1200dp", showBackground = true,
+    backgroundColor = 0xff00000,
+)
+@Preview(
+    device = "spec:width=400dp,height=1200dp", showBackground = true,
+    backgroundColor = 0xff00000, locale = "ja",
+)
+@Composable
+fun OrderViewPreview() {
+    OverView()
+}
 
 @Composable
 fun RadioButtonWithText(

@@ -1,3 +1,31 @@
 <resources>
     <string name="app_name">Order</string>
+    <string name="top_description">hamburger</string>
+    <string name="shop_name_first" translatable="false">Colbar\'s</string>
+    <string name="shop_name_second" translatable="false">" burger"</string>
+    <string name="middle_description">hamburger</string>
+    <string name="classic_beef">Classic Beef</string>
+    <string name="spicy_chicken">Spicy Chicken</string>
+    <string name="vegetarian">Vegetarian</string>
+    <string name="barbecue">Barbecue</string>
+    <string name="hot_dogs">Hot Dogs</string>
+    <string name="coffee">Coffee</string>
+    <string name="nugget">Nugget</string>
+    <string name="hamburger">Hamburger</string>
+    <string name="cheeseburger">Cheeseburger</string>
+    <string name="choose_main">Choose a burger</string>
+    <string name="choose_side">Choose a side dish</string>
+    <string name="french_fries">French Fries</string>
+    <string name="amount_sauce">Please specify the amount of sauce</string>
+    <string name="less">less</string>
+    <string name="normal">normal</string>
+    <string name="more">more</string>
+    <string name="iced_coffee">Iced Coffee</string>
+    <string name="iced_cafe_au_lait">Iced Café au Lait</string>
+    <string name="coke">Coke</string>
+    <string name="choose_your_drink">Choose your drink</string>
+    <string name="blank" translatable="false"></string>
+    <string name="drink">Drink</string>
+    <string name="order_description">order screen</string>
+    <string name="order_now">ORDER NOW</string>
 </resources>

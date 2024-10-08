@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Order</string>
+    <string name="top_description">ハンバーガー</string>
+    <string name="middle_description">ハンバーガー</string>
+    <string name="classic_beef">クラシックビーフ</string>
+    <string name="spicy_chicken">スパイシーチキン</string>
+    <string name="vegetarian">ベジタリアン</string>
+    <string name="barbecue">バーベキュー</string>
+    <string name="hot_dogs">ホットドッグ</string>
+    <string name="coffee">コーヒー</string>
+    <string name="nugget">ナゲット</string>
+    <string name="hamburger">ハンバーガー</string>
+    <string name="cheeseburger">チーズバーガー</string>
+    <string name="choose_main">メインを選択</string>
+    <string name="choose_side">サイドメニュー</string>
+    <string name="french_fries">フレンチフライ</string>
+    <string name="amount_sauce">ソースの量を調節できます</string>
+    <string name="less">少なめ</string>
+    <string name="normal">普通</string>
+    <string name="more">多め</string>
+    <string name="iced_coffee">アイスコーヒー</string>
+    <string name="iced_cafe_au_lait">アイスカフェオレ</string>
+    <string name="coke">コーラ</string>
+    <string name="choose_your_drink">ドリンクを選んでください</string>
+    <string name="drink">ドリンク</string>
+    <string name="order_description">注文画面</string>
+    <string name="order_now">注文する</string>
+</resources>

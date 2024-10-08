@@ -1,6 +1,7 @@
 package jp.ac.it_college.std.s23024.order.ui
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -10,8 +11,14 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.selection.selectable
 import androidx.compose.foundation.selection.selectableGroup
 import androidx.compose.foundation.selection.toggleable
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.ArrowDropDown
 import androidx.compose.material3.Checkbox
+import androidx.compose.material3.DropdownMenu
+import androidx.compose.material3.DropdownMenuItem
+import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.RadioButton
 import androidx.compose.material3.Slider
 import androidx.compose.material3.Text
@@ -188,3 +195,80 @@ fun SauceAmountSection(modifier: Modifier = Modifier) {
 private fun SauceAmountSectionPreview() {
     SauceAmountSection()
 }
+
+@Composable
+fun DrinkSelectionSection(modifier: Modifier = Modifier) {
+    var expanded by remember { mutableStateOf(false) }
+    var selectedDrink by remember { mutableIntStateOf(R.string.blank) }
+    val drinks = listOf(
+        R.string.iced_coffee,
+        R.string.iced_cafe_au_lait,
+        R.string.coke
+    )
+    Box(
+        modifier = Modifier
+            .fillMaxWidth()
+            .background(
+                color = BaseColor,
+                shape = MaterialTheme.shapes.extraLarge
+            )
+    ) {
+        Column(
+            modifier = Modifier
+                .padding(16.dp)
+        ) {
+            Text(text = stringResource(R.string.choose_your_drink),
+                style = MaterialTheme.typography.titleLarge
+                )
+            Box(
+                modifier = Modifier
+                    .padding(16.dp)
+                    .fillMaxWidth()
+            ) {
+                OutlinedTextField(
+                    value = stringResource(selectedDrink),
+                    onValueChange = {},
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .clickable { expanded = true },
+                    trailingIcon = {
+                        Icon(
+                            imageVector = Icons.Filled.ArrowDropDown,
+                            contentDescription = null,
+                            modifier = Modifier
+                                .clickable {  expanded = true }
+                        )
+                    },
+                    label = {
+                        Text(text = stringResource(R.string.drink))
+                    },
+                    readOnly = true
+                )
+                DropdownMenu(
+                    expanded = expanded,
+                    onDismissRequest = { expanded = false }
+                ) {
+                    drinks.forEach { drink ->
+                        DropdownMenuItem(
+                            text = {
+                                Text(text = stringResource(drink))
+                            },
+                            onClick = {
+                                selectedDrink = drink
+                                expanded = false
+                            }
+                        )
+                    }
+                }
+            }
+        }
+    }
+}
+
+@Preview(showBackground = true, backgroundColor = 0xFF00000)
+@Preview(locale = "ja", showBackground = true, backgroundColor = 0xFF00000)
+@Composable
+private fun DrinkSelectionSectionPreview() {
+    DrinkSelectionSection()
+}
+

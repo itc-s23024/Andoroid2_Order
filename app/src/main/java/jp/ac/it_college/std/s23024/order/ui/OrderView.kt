@@ -4,6 +4,7 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -13,6 +14,8 @@ import androidx.compose.foundation.selection.selectableGroup
 import androidx.compose.foundation.selection.toggleable
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowDropDown
+import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Checkbox
 import androidx.compose.material3.DropdownMenu
 import androidx.compose.material3.DropdownMenuItem
@@ -31,12 +34,18 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Brush
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import jp.ac.it_college.std.s23024.order.R
 import jp.ac.it_college.std.s23024.order.ui.theme.BaseColor
+import jp.ac.it_college.std.s23024.order.ui.theme.Orange400
+import jp.ac.it_college.std.s23024.order.ui.theme.Pink80
 
 @Composable
 fun RadioButtonWithText(
@@ -272,3 +281,38 @@ private fun DrinkSelectionSectionPreview() {
     DrinkSelectionSection()
 }
 
+@Composable
+fun OrderButtonSection(
+    modifier: Modifier = Modifier,
+    text: String,
+    onClick: () -> Unit = {}) {
+    val gradient = Brush.verticalGradient(
+        colors = listOf(Pink80, Orange400)
+    )
+    Button(
+        onClick = onClick,
+        colors = ButtonDefaults.buttonColors(
+            containerColor = Color.Transparent
+        ),
+        contentPadding = PaddingValues(),
+        modifier = Modifier
+            .fillMaxWidth()
+            .background(
+                brush = gradient,
+                shape = MaterialTheme.shapes.extraLarge
+            )
+    ) {
+        Text(
+            text = text,
+            color = Color.White,
+            fontWeight = FontWeight.Bold,
+            fontSize = 40.sp
+        )
+    }
+}
+
+@Preview(showBackground = true)
+@Composable
+fun OrderButtonSectionPreview(modifier: Modifier = Modifier) {
+    OrderButtonSection(text = "注文する")
+}

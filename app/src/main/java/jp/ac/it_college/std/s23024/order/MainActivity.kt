@@ -5,12 +5,16 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
+import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import jp.ac.it_college.std.s23024.order.ui.MainScreen
+import jp.ac.it_college.std.s23024.order.ui.theme.ForestGreen
 import jp.ac.it_college.std.s23024.order.ui.theme.OrderTheme
 
 class MainActivity : ComponentActivity() {
@@ -20,10 +24,14 @@ class MainActivity : ComponentActivity() {
         setContent {
             OrderTheme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    Greeting(
-                        name = "Android",
-                        modifier = Modifier.padding(innerPadding)
-                    )
+                    Surface(
+                        modifier = Modifier
+                            .padding(innerPadding)
+                            .fillMaxSize(),
+                        color = ForestGreen
+                    ) {
+                        MainScreen()
+                    }
                 }
             }
         }
